@@ -1,0 +1,23 @@
+﻿@model E_GUNLUK.Models.Comments
+
+@{
+    Layout = null;
+}
+
+@using (@Html.BeginForm("Comment", "Comments", FormMethod.Post, new { id = "Comment-btn", @class = "comment-btn" }))
+
+{
+    @Html.AntiForgeryToken()
+
+<h4>Add your comment</h4>
+<div class="comment-bottom">
+    @Html.TextAreaFor(model => model.theComment)
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <a class="btn btn-default" href="javascript:document.getElementById('Comment-btn').submit()">Comment</a>
+    </div>
+</div>
+
+}
+

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<E_GUNLUK.Models.Favorites>
+
+@{
+    ViewBag.Title = "FavList";
+}
+
+<h2>FavList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Note.Title)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note.Title)   ||      @Html.Action("AddToFav","Favorites", new { id = item.whichNote })
+        </td>
+
+    </tr>
+}
+
+</table>

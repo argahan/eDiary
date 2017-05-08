@@ -1,0 +1,45 @@
+﻿@model IEnumerable<E_GUNLUK.Models.Note>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Model.ToList().Count() == 0)
+    {
+        <h1>There are no notes!</h1>
+
+    }
+    else
+    {
+        <span>Notes Written: @Model.ToList().Count()</span>
+        foreach (var item in Model)
+        {
+            <div class="tc-ch">
+                <div class="tch-img">
+                    <a href="/Notes/Details/@item.NoteId"><img src="~/Content/images/1.jpg" class="img-responsive" alt="" /></a>
+                </div>
+
+
+                <h3><a href="/Notes/Details/@item.NoteId">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+
+                <p id="text">
+                    @Html.DisplayFor(modelItem => item.NoteText)
+                </p><a class="" href="/Notes/Details/@item.NoteId">Keep reading</a>
+
+
+                <div class="blog-poast-info">
+                    <ul>
+                        
+                        <li><i class="glyphicon glyphicon-calendar"> </i>@item.NoteDate</li>
+                        <li><i class="glyphicon glyphicon-comment"> </i>@Html.Action("CommentsCounts", "Comments", new { id = item.NoteId })</li>
+                        <li><i class="glyphicon glyphicon-comment"> </i>@Html.Action("LikesCounts", "Likes", new { id = item.NoteId })</li>
+                    </ul>
+                </div>
+
+            </div> }
+                    <hr />
+
+
+                    }
+}  

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<E_GUNLUK.Models.Tags>
+@{ 
+    Layout = null;
+}
+
+@Html.DropDownList("tagId", (MultiSelectList)ViewBag.tags, new { multiple = "multiple" })
+@{
+    //Html.ListBox("tagId", (MultiSelectList)ViewBag.tags)
+}
+
+
+

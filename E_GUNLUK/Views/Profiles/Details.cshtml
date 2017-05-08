@@ -1,0 +1,141 @@
+﻿@model E_GUNLUK.Models.Profile
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = Model.FirstName + Model.LastName + "'s Profile";
+
+}
+
+<div>
+    @{ 
+        if (Model.User == User.Identity.GetUserId())
+        {
+
+                    <h6>@Html.ActionLink("Edit your profile", "Edit", "Profiles", new { id = Model.User }, null);</h6>
+                
+        }
+        else
+        {
+                    <h6>@Html.Action("AddFriend", "Profiles", new { Model.User })</h6>
+                    }
+                    }
+                    <div class="right_col" role="main">
+                        <div class="">
+                            
+                            <div class="clearfix"></div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="x_panel">
+                                        <div class="x_title">
+                                            <h3>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h3>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="x_content">
+                                            <div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+                                                <div class="profile_img">
+                                                    <div id="crop-avatar">
+                                                        <!-- Current avatar -->
+                                                        <img class="img-responsive avatar-view" src="~/Content/images/si.png" alt="Avatar" title="Change the avatar" width="200" height="200">
+                                                    </div>
+                                                </div>
+                                                <ul class="list-unstyled user_data">
+                                                    <li>
+                                                        <i class="fa fa-map-marker user-profile-icon"></i> BirthDay: @Html.DisplayFor(model => model.Birthdate)<br/>
+                                                    </li>
+                                                    <li>
+                                                        <i class="fa fa-briefcase user-profile-icon"></i> Bio: @Html.DisplayFor(model => model.Bio)
+                                                    </li>
+
+                                                    
+                                                </ul>
+                                                <br />
+
+                                            </div>
+                                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                                        <li role="presentation" class="active">
+                                                            <a href="#My_Notes" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Notes</a>
+                                                        </li>
+                                                        <li role="presentation" class="">
+                                                            <a href="#Fav_Notes" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Friends</a>
+                                                        </li>
+                                                        <li role="presentation" class="">
+                                                            <a href="#My_Favorite" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Favourite</a>
+                                                        </li>
+                                                        
+                                                    </ul>
+                                                    <div id="myTabContent" class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane fade active in" id="My_Notes" aria-labelledby="home-tab">
+                                                            <div class="x_panel">
+                                                                <div class="x_title">
+                                                                </div>
+                                                                <div class="x_content">
+                                                                   @Html.Action("MyNotes", "Profiles")
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane fade" id="Fav_Notes" aria-labelledby="profile-tab">
+                                                            <div class="x_panel">
+                                                                <div class="x_title">
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                                <div class="x_content">
+                                                                   @Html.Action("ShowFriendsList", "Profiles")
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane fade in" id="My_Favorite" aria-labelledby="home-tab">
+                                                            <div class="x_panel">
+                                                                <div class="x_title">
+                                                                    <div class="clearfix"></div></div>
+                                                                <div class="x_content">
+                                                                    @Html.Action("MyFavorite", "Profiles")
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--
+                        <h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) 's
+                    Profile</h4>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Birthdate)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Birthdate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Bio)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Bio)
+                            </dd>
+
+                        </dl>
+                    @{
+                        if ( User.Identity.IsAuthenticated && Model.User == User.Identity.GetUserId())
+                        {
+                            Html.RenderAction("ShowFriendsList","Profiles");
+                        }
+
+                        Html.RenderAction("FetchPosts", "Profiles");
+                    }-->
+</div>
+

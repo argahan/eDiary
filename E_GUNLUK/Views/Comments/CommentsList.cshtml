@@ -1,0 +1,38 @@
+﻿@model IEnumerable<E_GUNLUK.Models.Comments>
+
+@{
+    Layout = null;
+}
+<div>
+    @{if (Model == null)
+        {
+            <h4>There are no comments yet! Be the first to comment!</h4>
+            return;
+        }
+        
+        foreach (var i in Model)
+        {
+        <div class="comment-top">
+            <div class="media-left">
+                <a href="#">
+                    <img src="~/Content/images/si.png" alt="">
+
+                </a>
+                @i.commentDate
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">@i.commentator.FirstName @i.commentator.LastName</h4> 
+                <p>@i.theComment</p>
+</div>
+            <br />
+            <br />
+           
+            
+        </div>
+                }
+            }
+        
+        
+  
+   
+    </div>
